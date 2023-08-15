@@ -1,0 +1,59 @@
+plugins:
+  - rubocop-rails
+  - rubocop-minitest
+
+AllCops:
+  TargetRubyVersion: 3.1
+  NewCops: enable
+  Exclude:
+    - 'bin/**/*'
+    - 'db/schema.rb'
+    - 'node_modules/**/*'
+    - 'storage/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+
+# Class-level documentation is required where a class carries real behaviour;
+# Rails' generated one-line shells do not benefit from it.
+Metrics/BlockLength:
+  Exclude:
+    - 'config/environments/*.rb'
+    - 'config/routes.rb'
+    - 'test/**/*'
+
+Metrics/MethodLength:
+  Max: 15
+
+Layout/LineLength:
+  Max: 120
+
+# Minitest declares tests as blocks with descriptive string names.
+Naming/VariableNumber:
+  Exclude:
+    - 'test/**/*'
+
+# The app has no internationalisation story; flash copy lives with the action
+# that raises it. Revisit if a second locale is ever added.
+Rails/I18nLocaleTexts:
+  Enabled: false
+
+# Integration tests legitimately assert a status, a redirect and a side effect.
+Minitest/MultipleAssertions:
+  Max: 8
+
+Style/Documentation:
+  Exclude:
+    - 'app/controllers/**/*'
+    - 'app/helpers/**/*'
+    - 'app/jobs/**/*'
+    - 'app/mailers/**/*'
+    - 'app/models/application_record.rb'
+    - 'app/channels/**/*'
+    - 'config/**/*'
+    - 'db/migrate/**/*'
+    - 'test/**/*'
+
+# Seed scripts report progress to the operator running them.
+Rails/Output:
+  Exclude:
+    - 'db/seeds.rb'
