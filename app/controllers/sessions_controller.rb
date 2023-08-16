@@ -6,8 +6,6 @@ class SessionsController < ApplicationController
   def create
     username = params[:username]
     user = User.find_or_create_by(username:)
-    puts user.attributes
-    puts request.referrer
     if user
       session[:user_id] = user.id
       redirect_to products_path, notice: 'Logged in successfully!'
