@@ -19,7 +19,7 @@ In this app I am getting the products data from the dummyjson api and using that
 
 1. **Clone the Repository**:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Chsaleem31/take-home.git
    cd take-home
    create a .env file and move ENVs from .env.example to it
    ```
