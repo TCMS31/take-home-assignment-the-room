@@ -1,0 +1,28 @@
+<h3>Comments</h3>
+<% if @comments.any? %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Comment</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @comments.each do |comment| %>
+        <tr>
+          <td><%= comment.user.username%></td>
+          <td><%= comment.message %></td>
+          <% if comment.user_id == session[:user_id] %>
+            <td><%= link_to 'Edit', edit_comment_path(comment), class: 'btn btn-warning' %></td>
+            <td>
+              <%= button_to 'Destroy', comment_path(comment), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger' %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No comments for this product yet.</p>
+<% end %>

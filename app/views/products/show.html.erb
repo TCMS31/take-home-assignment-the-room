@@ -1,0 +1,32 @@
+<div class="container mt-4">
+  <h1>Product Details</h1>
+
+  <div class="row">
+    <div class="preview col-md-4">
+      <img src="<%= @product.images.first%>" style="height: 25vh;" />
+    </div>
+    <div class="details col-md-6">
+      <h3><%= @product.title %></h3>
+      <p><%= @product.description %></p>
+      <h4>Rating: <span><%= @product.rating %> / 5</span></h4>
+      <h4>current price: <span>$<%= @product.price %></span></h4>
+    </div>
+  </div>
+
+  <br/>
+  <%= render  "comments" %>
+
+  <h3>Add a Comment</h3>
+  <%= form_with(model: Comment.new, url: comments_path) do |form| %>
+    <%= form.hidden_field :product_id, value: @product.id %>
+    <div class="form-group">
+      <%= form.label :user_id, "User ID" %>
+      <%= form.number_field :user_id, class: "form-control", value: session[:user_id] %>
+    </div>
+    <div class="form-group">
+      <%= form.label :message, "Message" %>
+      <%= form.text_area :message, class: "form-control" %>
+    </div>
+    <%= form.submit "Add Comment", class: "btn btn-primary" %>
+  <% end %>
+</div>

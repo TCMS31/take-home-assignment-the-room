@@ -1,0 +1,18 @@
+<%= form_with(model: @comment) do |form| %>
+  <div class="form-group">
+    <%= form.label :user_id, "User ID" %>
+    <%= form.number_field :user_id, class: "form-control", value: session[:user_id] %>
+  </div>
+  
+  <div class="form-group">
+    <%= form.label :product_id, "Product ID" %>
+    <%= form.number_field :product_id, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :message, "Message" %>
+    <%= form.text_area :message, class: "form-control" %>
+  </div>
+
+  <%= form.submit class: "btn btn-primary" %>
+<% end %>

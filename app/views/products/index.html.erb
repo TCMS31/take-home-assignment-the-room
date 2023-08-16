@@ -1,0 +1,36 @@
+<div class="container mt-4">
+  <h1>Products</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>description</th>
+        <th>price</th>
+        <th>discountPercentage</th>
+        <th>rating</th>
+        <th>stock</th>
+        <th>brand</th>
+        <th>category</th>
+        <th>image</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= product.id %></td>
+          <td><%= link_to product.title, product_path(product.id) %></td>
+          <td><%= product.description %></td>
+          <td><%= product.price %></td>
+          <td><%= product.discountPercentage %></td>
+          <td><%= product.rating %></td>
+          <td><%= product.stock %></td>
+          <td><%= product.brand %></td>
+          <td><%= product.category %></td>
+          <td><img src="<%= product.images.first %>" alt="" style="width: 100px;"/></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

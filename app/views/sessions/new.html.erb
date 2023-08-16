@@ -1,0 +1,10 @@
+<div class="container mt-4">
+  <h1>Enter Your Username</h1>
+  <%= form_with(url: sessions_path, local: true) do %>
+    <div class="form-group">
+      <%= label_tag :username %>
+      <%= text_field_tag :username, nil, class: "form-control" %>
+    </div>
+    <%= submit_tag "Submit", class: "btn btn-primary" %>
+  <% end %>
+</div>
