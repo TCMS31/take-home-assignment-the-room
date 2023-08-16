@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TakeHome</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <%= render "layouts/navbar" %>
+    <div class="container mt-4">
+      <% if notice %>
+        <%= render 'layouts/notice' %>
+      <% end %>
+      <% if alert %>
+        <%= render 'layouts/alerts' %>
+      <% end %>
+      <br/>
+
+      <%= yield %>
+    </div>
+  </body>
+</html>
