@@ -1,0 +1,36 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    hostname: postgres-api-db
+    restart: 'no'
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+      - type: tmpfs
+        target: /dev/shm
+    environment:
+      POSTGRES_DB: take_home_development
+      POSTGRES_USER: api_dev
+      POSTGRES_PASSWORD: RubyAPI2023!
+    shm_size: '128M'
+    command: >
+      postgres
+      -c shared_preload_libraries='pg_stat_statements'
+      -c pg_stat_statements.track=all
+      -c max_connections=200
+      -c shared_buffers=256MB
+      -c statement_timeout=180000
+    tmpfs:
+      - /tmp:size=512M
+
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
