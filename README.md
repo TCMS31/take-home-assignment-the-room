@@ -1,4 +1,4 @@
-# Take Home Test Project
+# Take Home Assignment
 
 This project is a simple web application built with Ruby on Rails and Dockerized for development ease. It uses PostgreSQL as its database. 
 
@@ -19,9 +19,9 @@ In this app I am getting the products data from the dummyjson api and using that
 
 1. **Clone the Repository**:
    ```bash
-   git clone <repository-url>
+   git clone [<repository-url>](https://github.com/Chsaleem31/take-home-assignment-the-room.git)
    cd take-home
-   create a .env file and move ENVs from .env.example to it
+   create a .env file and copy content from .env.example to it
    ```
 2. **Build the Docker Images**:
    ```bash
