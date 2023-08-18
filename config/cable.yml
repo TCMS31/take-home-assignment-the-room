@@ -1,0 +1,10 @@
+# The app defines no Action Cable channels. The in-process async adapter keeps
+# the dependency surface small; swap in redis here if channels are ever added.
+development:
+  adapter: async
+
+test:
+  adapter: test
+
+production:
+  adapter: async
