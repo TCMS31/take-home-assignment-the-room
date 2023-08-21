@@ -1,0 +1,7 @@
+<% { notice: "success", alert: "danger" }.each do |key, variant| %>
+  <% next if flash[key].blank? %>
+  <div class="alert alert-<%= variant %> alert-dismissible fade show" role="alert">
+    <%= flash[key] %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>

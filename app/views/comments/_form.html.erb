@@ -1,0 +1,12 @@
+<%= form_with(model: @comment) do |form| %>
+  <% if @comment.new_record? %>
+    <%= form.hidden_field :product_id %>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :message, "Your comment", class: "form-label" %>
+    <%= form.text_area :message, class: "form-control", rows: 4 %>
+  </div>
+
+  <%= form.submit class: "btn btn-primary" %>
+<% end %>

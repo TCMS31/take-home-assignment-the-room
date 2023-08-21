@@ -1,0 +1,35 @@
+<section>
+  <h2 class="h5 mb-3">
+    Comments
+    <span class="text-muted fw-normal">(<%= @comments.size %>)</span>
+  </h2>
+
+  <% if @comments.any? %>
+    <% @comments.each do |comment| %>
+      <% mine = comment.user_id == current_user.id %>
+      <article class="comment <%= "comment--mine" if mine %>">
+        <div class="comment__head">
+          <div class="d-flex align-items-center gap-2">
+            <span class="avatar" aria-hidden="true"><%= comment.user.username.first %></span>
+            <span class="comment__author"><%= comment.user.username %></span>
+            <% if mine %><span class="badge-soft">You</span><% end %>
+            <span class="comment__time"><%= time_ago_in_words(comment.created_at) %> ago</span>
+          </div>
+          <% if mine %>
+            <div class="comment__actions">
+              <%= link_to "Edit", edit_comment_path(comment), class: "btn btn-sm btn-outline-secondary" %>
+              <%= button_to "Delete", comment_path(comment), method: :delete,
+                    class: "btn btn-sm btn-outline-danger",
+                    form: { data: { turbo_confirm: "Delete this comment?" } } %>
+            </div>
+          <% end %>
+        </div>
+        <p class="comment__body"><%= comment.message %></p>
+      </article>
+    <% end %>
+  <% else %>
+    <div class="empty-state">
+      <p class="mb-0">No comments for this product yet. Be the first to share your thoughts.</p>
+    </div>
+  <% end %>
+</section>

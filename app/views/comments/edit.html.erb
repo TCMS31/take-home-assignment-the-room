@@ -1,0 +1,10 @@
+<% content_for :title, "Edit comment" %>
+
+<div class="page-header">
+  <h1>Edit comment</h1>
+  <p class="page-header__meta">Posted <%= time_ago_in_words(@comment.created_at) %> ago.</p>
+</div>
+
+<%= render "form" %>
+
+<%= link_to "Back to product", product_path(@comment.product_id), class: "btn btn-link mt-3 px-0" %>

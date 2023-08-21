@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container">
+    <%= link_to "Take Home", products_path, class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <%= link_to "Products", products_path, class: "nav-link #{'active' if controller_name == 'products'}" %>
+        </li>
+      </ul>
+      <% if logged_in? %>
+        <div class="d-flex align-items-center gap-2">
+          <span class="avatar" aria-hidden="true"><%= current_user.username.first %></span>
+          <span class="navbar-user">Signed in as <strong><%= current_user.username %></strong></span>
+          <%= button_to "Sign out", logout_path, method: :delete, class: "btn btn-sm btn-outline-secondary" %>
+        </div>
+      <% else %>
+        <%= link_to "Sign in", new_session_path, class: "btn btn-sm btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</nav>
