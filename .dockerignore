@@ -1,0 +1,29 @@
+.git
+.github
+.gitignore
+.gitattributes
+
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+config/master.key
+
+# Local state that must never enter an image
+log/*
+tmp/*
+storage/*
+public/assets
+public/packs
+node_modules
+vendor/bundle
+.bundle
+
+# Development-only material
+docs
+test
+.rubocop.yml
+README.md
+*.md
+*.sqlite3
+.DS_Store
