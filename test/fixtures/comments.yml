@@ -1,0 +1,9 @@
+alice_on_iphone:
+  user: alice
+  product_id: 1
+  message: Battery life is excellent, easily a full day.
+
+bob_on_iphone:
+  user: bob
+  product_id: 1
+  message: Camera is a big step up from the previous model.
