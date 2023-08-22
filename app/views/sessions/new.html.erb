@@ -1,0 +1,19 @@
+<% content_for :title, "Sign in" %>
+
+<div class="row justify-content-center">
+  <div class="col-md-6 col-lg-5">
+    <div class="page-header">
+      <h1>Sign in</h1>
+      <p class="page-header__meta">Enter a username to start commenting. New names are registered automatically.</p>
+    </div>
+
+    <%= form_with(url: sessions_path, method: :post) do %>
+      <div class="mb-3">
+        <%= label_tag :username, "Username", class: "form-label" %>
+        <%= text_field_tag :username, nil, class: "form-control", autofocus: true,
+              autocomplete: "username", maxlength: User::MAX_USERNAME_LENGTH %>
+      </div>
+      <%= submit_tag "Continue", class: "btn btn-primary w-100" %>
+    <% end %>
+  </div>
+</div>

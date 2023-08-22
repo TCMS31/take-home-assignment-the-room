@@ -1,0 +1,44 @@
+<% content_for :title, "Products" %>
+
+<div class="page-header">
+  <h1>Products</h1>
+  <p class="page-header__meta">
+    <%= pluralize(@products.size, "product") %> from the dummyjson catalogue.
+    Open a product to read and leave comments.
+  </p>
+</div>
+
+<% if @products.any? %>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-3">
+    <% @products.each do |product| %>
+      <div class="col">
+        <article class="product-card">
+          <div class="product-card__media">
+            <% if product.image_url %>
+              <%= image_tag product.image_url, alt: product.title, loading: "lazy" %>
+            <% end %>
+          </div>
+          <div class="product-card__body">
+            <h2 class="product-card__title">
+              <%= link_to product.title, product_path(product.id) %>
+            </h2>
+            <div class="product-card__meta">
+              <%= product.brand.presence || "Unbranded" %> &middot; <%= product.category.to_s.titleize %>
+            </div>
+            <div class="rating">&#9733; <%= product.rating %> / 5</div>
+            <div class="product-card__footer">
+              <span class="product-card__price"><%= number_to_currency(product.discounted_price) %></span>
+              <span class="badge-soft <%= "stock-out" unless product.in_stock? %>">
+                <%= product.in_stock? ? "#{product.stock} in stock" : "Out of stock" %>
+              </span>
+            </div>
+          </div>
+        </article>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <div class="empty-state">
+    <p class="mb-0">No products to show right now. The catalogue service may be unavailable &mdash; try again shortly.</p>
+  </div>
+<% end %>
